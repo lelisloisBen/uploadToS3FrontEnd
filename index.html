@@ -11,7 +11,7 @@
 
         <label for="user_file">Upload Your File</label>
         <br></br>
-        <input id="fileinput" type="file" name="user_file">
+        <input id="fileinput" type="file" name="user_file" accept="image/*">
         <br></br>
         <button type="submit" onclick="onSelectFile()" >Upload</button>
    
@@ -21,25 +21,25 @@
 
     const upload = (file) => {
         console.log("console.log: ", file )
-        fetch('https://samir-upload.herokuapp.com/upload', {
-            method: 'POST',
-            mode: "cors",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({"the_file":{"name": "samir", "test": "fuck"}})
-        })
-        .then(
-            response => response.json()
-        ).then(
-            success => console.log(success)
-        ).catch(
-            error => console.log(error)
-        );
+        // fetch('https://samir-upload.herokuapp.com/upload', {
+        //     method: 'POST',
+        //     mode: "cors",
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({"the_file":{"name": "samir", "test": "fuck"}})
+        // })
+        // .then(
+        //     response => response.json()
+        // ).then(
+        //     success => console.log(success)
+        // ).catch(
+        //     error => console.log(error)
+        // );
     };
 
     // Event handler executed when a file is selected
-    const onSelectFile = () => upload(input.files[0]);
+    const onSelectFile = () => upload(input.files);
 
     // Add a listener on your input
     // It will be triggered when a file will be selected
