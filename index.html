@@ -40,7 +40,7 @@
             formData.append('files[]', file)
         }
 
-        fetch('https://samir-upload.herokuapp.com/upload', {
+        fetch('https://samir-upload.herokuapp.com/multi', {
             method: 'PUT',
             body: formData
         })
