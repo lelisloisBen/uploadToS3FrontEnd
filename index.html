@@ -27,7 +27,7 @@
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({"the_file":file})
+            body: JSON.stringify({"the_file":{"name": "samir", "test": "fuck"}})
         })
         .then(
             response => response.json()
