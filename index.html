@@ -23,6 +23,7 @@
         console.log("console.log: ", file )
         fetch('https://samir-upload.herokuapp.com/upload', {
             method: 'POST',
+            mode: "cors",
             headers: {
                 'Content-Type': 'application/json'
             },
