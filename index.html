@@ -25,17 +25,20 @@
         const fd = new FormData();
         fd.append('the_file', file);
 
-        fetch('https://samir-upload.herokuapp.com/upload', {
-            method: 'POST',
-            body: fd
-        })
-        .then(
-            response => response.json()
-        ).then(
-            success => console.log(success)
-        ).catch(
-            error => console.log(error)
-        );
+        console.log("fd: ", fd)
+        console.log("type: ", typeof(fd))
+
+        // fetch('https://samir-upload.herokuapp.com/upload', {
+        //     method: 'POST',
+        //     body: fd
+        // })
+        // .then(
+        //     response => response.json()
+        // ).then(
+        //     success => console.log(success)
+        // ).catch(
+        //     error => console.log(error)
+        // );
     };
 
     // Event handler executed when a file is selected
