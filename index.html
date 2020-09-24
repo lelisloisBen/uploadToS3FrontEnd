@@ -26,7 +26,7 @@
         fetch('https://samir-upload.herokuapp.com/upload', {
             method: 'POST',
             mode: "cors",
-            body: file
+            body: JSON.stringify(file)
         })
         .then(
             response => response.json()
