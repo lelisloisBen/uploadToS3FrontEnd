@@ -20,22 +20,25 @@
     const input = document.getElementById('fileinput');
 
     const upload = (file) => {
-        console.log("console.log: ", file )
-        // fetch('https://samir-upload.herokuapp.com/upload', {
-        //     method: 'POST',
-        //     mode: "cors",
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({"the_file":{"name": "samir", "test": "fuck"}})
-        // })
-        // .then(
-        //     response => response.json()
-        // ).then(
-        //     success => console.log(success)
-        // ).catch(
-        //     error => console.log(error)
-        // );
+        // console.log("console.log: ", file )
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        console.log(formData);
+
+        fetch('https://samir-upload.herokuapp.com/upload', {
+            method: 'POST',
+            mode: "cors",
+            body: formData
+        })
+        .then(
+            response => response.json()
+        ).then(
+            success => console.log(success)
+        ).catch(
+            error => console.log(error)
+        );
     };
 
     // Event handler executed when a file is selected
