@@ -14,7 +14,48 @@
         <input id="fileinput" type="file" name="user_file" accept="image/*">
         <br></br>
         <button type="submit" onclick="onSelectFile()" >Upload</button>
+
+        <hr><hr>
+
+        <label for="upp_files">Upload all Files you want</label>
+        <br></br>
+        <input id="myFiles" type="file" name="files[]" multiple accept="image/*" >
+        <br></br>
+        <button type="submit" onclick="submitFiles()" >Upload</button>
    
+
+
+<script>
+    const myInputFiles = document.getElementById('myFiles').files;
+
+    const submitFiles = () => {
+        uploadALL(myInputFiles)
+    };
+
+    const uploadALL = (files) => {
+
+        const formData = new FormData();
+        for (let i = 0; i < files.length; i++) {
+            let file = files[i]
+            formData.append('files[]', file)
+        }
+
+        fetch('https://samir-upload.herokuapp.com/upload', {
+            method: 'PUT',
+            body: formData
+        })
+        .then(
+            response => response.json()
+        ).then(
+            success => console.log(success)
+        ).catch(
+            error => console.log(error)
+        );
+    };
+
+
+
+</script>
 
 <script>
     const input = document.getElementById('fileinput');
@@ -39,7 +80,7 @@
 
     // Event handler executed when a file is selected
     const onSelectFile = () => {
-        upload(input.files[0])
+        myInputFiles(input.files[0])
     };
 
     // Add a listener on your input
