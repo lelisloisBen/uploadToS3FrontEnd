@@ -21,26 +21,23 @@
 
     const upload = (file) => {
 
-        console.log(file);
-        // st = JSON.stringify(file);
-        const fd = new FormData();
+        let fd = new FormData();
         fd.append('the_file', file);
-        var option = { content: fd}
 
-        console.log("fd: ", option)
-        console.log("type: ", typeof(option))
-
-        // fetch('https://samir-upload.herokuapp.com/upload', {
-        //     method: 'POST',
-        //     body: fd
-        // })
-        // .then(
-        //     response => response.json()
-        // ).then(
-        //     success => console.log(success)
-        // ).catch(
-        //     error => console.log(error)
-        // );
+        fetch('https://samir-upload.herokuapp.com/upload', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            body: fd
+        })
+        .then(
+            response => response.json()
+        ).then(
+            success => console.log(success)
+        ).catch(
+            error => console.log(error)
+        );
     };
 
     // Event handler executed when a file is selected
