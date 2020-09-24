@@ -26,6 +26,9 @@
 
         fetch('https://samir-upload.herokuapp.com/upload', {
             method: 'POST',
+            headers: {
+                'Content-Type': none,
+            },
             body: fd
         })
         .then(
