@@ -22,11 +22,12 @@
     const upload = (file) => {
 
         console.log(file);
+        const fd = new FormData();
+        fd.append('the_file', file);
 
         fetch('https://samir-upload.herokuapp.com/upload', {
             method: 'POST',
-            mode: "cors",
-            body: JSON.stringify(file)
+            body: fd
         })
         .then(
             response => response.json()
