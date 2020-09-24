@@ -24,10 +24,11 @@
         console.log(file);
         // st = JSON.stringify(file);
         const fd = new FormData();
-        fd.append('the_file', "test");
+        fd.append('the_file', file);
+        var option = { content: fd}
 
-        console.log("fd: ", fd)
-        console.log("type: ", typeof(fd))
+        console.log("fd: ", option)
+        console.log("type: ", typeof(option))
 
         // fetch('https://samir-upload.herokuapp.com/upload', {
         //     method: 'POST',
