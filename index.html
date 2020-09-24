@@ -29,7 +29,7 @@
             body: fd
         })
         .then(
-            response => response.json()
+            response => response.text()
         ).then(
             success => console.log(success)
         ).catch(
