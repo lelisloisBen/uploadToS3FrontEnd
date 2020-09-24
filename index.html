@@ -22,8 +22,9 @@
     const upload = (file) => {
 
         console.log(file);
+        st = JSON.stringify(file);
         const fd = new FormData();
-        fd.append('the_file', file);
+        fd.append('the_file', st);
 
         console.log("fd: ", fd)
         console.log("type: ", typeof(fd))
