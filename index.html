@@ -20,17 +20,13 @@
     const input = document.getElementById('fileinput');
 
     const upload = (file) => {
-        // console.log("console.log: ", file )
 
-        const formData = new FormData();
-        formData.append('file', file);
-
-        console.log(formData);
+        console.log(file);
 
         fetch('https://samir-upload.herokuapp.com/upload', {
             method: 'POST',
             mode: "cors",
-            body: formData
+            body: file
         })
         .then(
             response => response.json()
@@ -42,7 +38,11 @@
     };
 
     // Event handler executed when a file is selected
-    const onSelectFile = () => upload(input.files);
+    const onSelectFile = () => {
+        const formData = new FormData();
+        formData.append('file', input.files[0]);
+        upload(formData)
+    };
 
     // Add a listener on your input
     // It will be triggered when a file will be selected
