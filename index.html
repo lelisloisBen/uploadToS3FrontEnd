@@ -39,9 +39,7 @@
 
     // Event handler executed when a file is selected
     const onSelectFile = () => {
-        const formData = new FormData();
-        formData.append('file', input.files[0]);
-        upload(formData)
+        upload(input.files[0])
     };
 
     // Add a listener on your input
