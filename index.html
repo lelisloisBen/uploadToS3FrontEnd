@@ -22,10 +22,49 @@
         <input id="myFiles" type="file" name="files[]" multiple accept="image/*" >
         <br></br>
         <button type="submit" onclick="submitFiles()" >Upload</button>
-   
+        
+        <hr><hr>
+
+        <label for="reFile">Upload one File and resize it</label>
+        <br></br>
+        <input id="fileResize" type="file" name="reFile" accept="image/*">
+        <br></br>
+        <button type="submit" onclick="submitResize()" >Upload</button>
 
 
 <script>
+
+//---------- Upload one file at the time and Resize ---------------------------------------------
+    
+    const input = document.getElementById('fileResize');
+
+    const submitResize = () => {
+        resizeOne(input.files[0])
+    };
+
+    const resizeOne = (file) => {
+
+        let fdR = new FormData();
+        fdR.append('fileToResize', file);
+
+        fetch('https://samir-upload.herokuapp.com/resize', {
+            method: 'PUT',
+            body: fdR
+        })
+        .then(
+            response => response.json()
+        ).then(
+            success => console.log(success)
+        ).catch(
+            error => console.log(error)
+        );
+    };
+
+    
+
+
+//------------ Upload many files ---------------------------------------------------
+
     const myInputFiles = document.getElementById('myFiles');
 
     const submitFiles = () => {
@@ -55,11 +94,8 @@
         );
     };
 
+//-------------- Upload one file at the time ---------------------------------------------
 
-
-</script>
-
-<script>
     const input = document.getElementById('fileinput');
 
     const upload = (file) => {
@@ -82,7 +118,7 @@
 
     // Event handler executed when a file is selected
     const onSelectFile = () => {
-        myInputFiles(input.files[0])
+        upload(input.files[0])
     };
 
     // Add a listener on your input
