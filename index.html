@@ -37,16 +37,10 @@
         console.log("the files: ",files)
 
         let formData = new FormData();
-        let myListOfFiles = [];
 
         for (let i = 0; i < files.length; i++) {
-            myListOfFiles.push(files[i])
-            // let file = files[i]
-            // formData.append('files[]', file)
+            formData.append('files[]', files[i])
         }
-        formData.append('filesList', myListOfFiles)
-
-        console.log("the list of files: ", myListOfFiles)
 
         fetch('https://samir-upload.herokuapp.com/multi', {
             method: 'PUT',
