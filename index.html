@@ -34,19 +34,19 @@
 
     const uploadALL = (files) => {
 
-        console.log("the files",files)
+        console.log("the files: ",files," type: ",typeof(files))
 
         // let formData = new FormData();
         let myListOfFiles = [];
 
         for (let i = 0; i < files.length; i++) {
-            myListOfFiles.push(file[i])
+            myListOfFiles.push(files[i])
             // let file = files[i]
             // formData.append('files[]', file)
         }
         // formData.append('files[]', myListOfFiles)
 
-        console.log("the list of files", myListOfFiles)
+        console.log("the list of files: ", myListOfFiles, " type: ", typeof(myListOfFiles))
 
         // fetch('https://samir-upload.herokuapp.com/multi', {
         //     method: 'PUT',
