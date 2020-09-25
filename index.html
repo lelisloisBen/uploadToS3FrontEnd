@@ -34,13 +34,17 @@
 
     const uploadALL = (files) => {
 
-        const formData = new FormData();
-        for (let i = 0; i < files.length; i++) {
-            let file = files[i]
-            formData.append('files[]', file)
-        }
+        let formData = new FormData();
+        let myListOfFiles = [];
 
-        console.log(formData)
+        for (let i = 0; i < files.length; i++) {
+            myListOfFiles.push(file[i])
+            // let file = files[i]
+            // formData.append('files[]', file)
+        }
+        formData.append('files[]', myListOfFiles)
+
+        console.log(myListOfFiles)
 
         fetch('https://samir-upload.herokuapp.com/multi', {
             method: 'PUT',
