@@ -34,6 +34,8 @@
 
 <script>
 
+    
+
 //---------- Upload one file at the time and Resize ---------------------------------------------
     
     const inputR = document.getElementById('fileResize');
@@ -48,17 +50,33 @@
         fdR.append('fileToResize', file);
         console.log(Array.from(fdR));
 
-        fetch('https://samir-upload.herokuapp.com/resize', {
-            method: 'PUT',
-            body: fdR
+        axios.request( {
+        method: "post", 
+        url: "https://samir-upload.herokuapp.com/resize", 
+        data: fdR, 
+            onUploadProgress: (p) => {
+                console.log(p); 
+                this.setState({
+                fileprogress: p.loaded / p.total
+                })
+            }
+        }).then (data => {
+            this.setState({
+                fileprogress: 1.0,
+            })
         })
-        .then(
-            response => response.json()
-        ).then(
-            success => console.log(success)
-        ).catch(
-            error => console.log(error)
-        );
+
+        // fetch('https://samir-upload.herokuapp.com/resize', {
+        //     method: 'PUT',
+        //     body: fdR
+        // })
+        // .then(
+        //     response => response.json()
+        // ).then(
+        //     success => console.log(success)
+        // ).catch(
+        //     error => console.log(error)
+        // );
     };
 
     
@@ -126,6 +144,7 @@
     // It will be triggered when a file will be selected
     // input.addEventListener('change', onSelectFile, false);
 </script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     
 </body>
 </html>
