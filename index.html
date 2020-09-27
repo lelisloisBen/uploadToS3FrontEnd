@@ -46,6 +46,7 @@
 
         let fdR = new FormData();
         fdR.append('fileToResize', file);
+        console.log(Array.from(fdR));
 
         fetch('https://samir-upload.herokuapp.com/resize', {
             method: 'PUT',
