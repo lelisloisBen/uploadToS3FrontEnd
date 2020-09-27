@@ -82,7 +82,7 @@
             formData.append('files[]', files[i])
         }
 
-        fetch('https://samir-upload.herokuapp.com/multi', {
+        fetch('https://samir-upload.herokuapp.com/resize', {
             method: 'PUT',
             body: formData
         })
