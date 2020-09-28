@@ -104,7 +104,8 @@
         let fd = new FormData();
         fd.append('the_file', file);
 
-        fetch('https://samir-upload.herokuapp.com/upload', {
+        // fetch('https://samir-upload.herokuapp.com/upload', {
+        fetch('https://samir-upload.herokuapp.com/see_type', {
             method: 'PUT',
             body: fd
         })
