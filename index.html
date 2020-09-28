@@ -58,37 +58,46 @@
         <br></br>
         <button type="submit" onclick="submitResize()" >Upload</button> -->
 
+        <input id="user_id" type="text" placeholder="user id">
+        <input id="name" type="text" placeholder="image name">
+        <input id="path" type="text" placeholder="image path">
+        <input id="type" type="text" placeholder="image type">
+        <button type="submit" onclick="submitMysql()" >Upload to mysql</button>
 
 <script>
 
-    // loading -------------------------------------------
+    let i_id = document.getElementById("user_id").value;
+    let i_name = document.getElementById("name").value;
+    let i_path = document.getElementById("path").value;
+    let i_type = document.getElementById("type").value;
 
-    // const movieApiMovies = () => {
+    const submitMysql = () => {
+        let myloader = `<div class="loader"></div>`;
+        document.getElementById('loading').innerHTML = myloader;
 
-    //     let loader = `<div class="boxLoading"></div>`;
-    //     document.getElementById('movieResult').innerHTML = loader;
+        let fdSql = new FormData();
+        fdSql.append('user_id', i_id);
+        fdSql.append('image_name', i_name);
+        fdSql.append('image_path', i_path);
+        fdSql.append('image_type', i_type);
 
-    //     fetch(movieApi_url + "movies/")
-    //         .then(response => response.json())
-    //         .then(function (data) {
-    //             let result = `<h2> Movies I've watched! </h2>`;
-    //             data.forEach((movie) => {
-    //                 const {id, name, year, note_imdb, genre, duration} = movie;
-    //                 result +=
-    //                     `<div>
-    //                         <h5> Movie ID: ${id} </h5>
-    //                         <ul>
-    //                             <li>Movie name: ${name}</li>
-    //                             <li>Movie year: ${year}</li>
-    //                             <li>Movie note on IMDB: ${note_imdb}</li>
-    //                             <li>Movie Genre: ${genre}</li>
-    //                             <li>Movie duration: ${duration}</li>
-    //                         </ul>
-    //                     </div>`;
-    //                 document.getElementById('movieResult').innerHTML = result;
-    //             })
-    //         })
-    // };
+        fetch('https://samir-upload.herokuapp.com/sql', {
+            method: 'POST',
+            body: fdSql
+        })
+        .then(
+            response => response.json()
+        ).then(
+            success => {
+                console.log(success);
+                document.getElementById('loading').innerHTML = "";
+                }
+            
+        ).catch(
+            error => console.log(error)
+        );
+    }
+    
 
 //---------- Upload one file at the time and Resize ---------------------------------------------
     

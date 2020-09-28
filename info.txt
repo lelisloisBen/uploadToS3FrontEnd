@@ -1,0 +1,17 @@
+// create mysql table
+// https://www.mysqltutorial.org/mysql-timestamp.aspx/
+// https://www.codementor.io/@adityamalviya/python-flask-mysql-connection-rxblpje73
+// To install on Ubuntu for flask mysql
+// sudo apt-get install mysql-server
+// sudo apt-get install libmysqlclient-dev
+// pip3 install flask-mysqldb
+
+create table activity_images(
+   id INT NOT NULL AUTO_INCREMENT,
+   user_id INT NOT NULL,
+   img_name VARCHAR(100) NOT NULL,
+   img_path VARCHAR(100) NOT NULL,
+   img_type VARCHAR(20) NOT NULL,
+   updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   PRIMARY KEY ( id )
+);
