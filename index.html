@@ -4,6 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload File To S3</title>
+
+<style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+
 </head>
 <body>
 
@@ -22,6 +47,8 @@
         <input id="myFiles" type="file" name="files[]" multiple accept="image/*" >
         <br></br>
         <button type="submit" onclick="submitFiles()" >Upload</button>
+
+        <div id="loading"></div>
         
         <hr><hr>
 
@@ -98,6 +125,8 @@
     const myInputFiles = document.getElementById('myFiles');
 
     const submitFiles = () => {
+        let myloader = `<h3>Be Patient, It's coming..</h3><div class="loader mx-auto"></div>`;
+        document.getElementById('loading').innerHTML = myloader;
         uploadALL(myInputFiles.files)
     };
 
@@ -120,7 +149,11 @@
         .then(
             response => response.json()
         ).then(
-            success => console.log(success)
+            success => {
+                console.log(success);
+                document.getElementById('loading').innerHTML = "";
+                }
+            
         ).catch(
             error => console.log(error)
         );
