@@ -48,17 +48,17 @@
         fdR.append('fileToResize', file);
         console.log(Array.from(fdR));
 
-        fetch('https://samir-upload.herokuapp.com/resize', {
-            method: 'PUT',
-            body: fdR
-        })
-        .then(
-            response => response.json()
-        ).then(
-            success => console.log(success)
-        ).catch(
-            error => console.log(error)
-        );
+        // fetch('https://samir-upload.herokuapp.com/resize', {
+        //     method: 'PUT',
+        //     body: fdR
+        // })
+        // .then(
+        //     response => response.json()
+        // ).then(
+        //     success => console.log(success)
+        // ).catch(
+        //     error => console.log(error)
+        // );
     };
 
     
