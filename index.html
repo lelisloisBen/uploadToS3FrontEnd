@@ -66,12 +66,17 @@
 
 <script>
 
-    let i_id = document.getElementById("user_id").value;
-    let i_name = document.getElementById("name").value;
-    let i_path = document.getElementById("path").value;
-    let i_type = document.getElementById("type").value;
+    const getAllinputsValues = () => {
+        let i_id = document.getElementById("user_id").value;
+        let i_name = document.getElementById("name").value;
+        let i_path = document.getElementById("path").value;
+        let i_type = document.getElementById("type").value;
+        console.log(i_id, i_name, i_path, i_type)
+        submitMysql(i_id, i_name, i_path, i_type)
+    }
 
-    const submitMysql = () => {
+
+    const submitMysql = (i_id, i_name, i_path, i_type) => {
         let myloader = `<div class="loader"></div>`;
         document.getElementById('loading').innerHTML = myloader;
 
